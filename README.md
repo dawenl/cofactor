@@ -1,6 +1,6 @@
 # CoFactor
 
-This repository contains the source code to reproduce the experimental results as described in the paper "Factorization Meets the Item Embedding: Regularizing Matrix Factorization with Item Co-occurrence" (to appeart in RecSys'16).
+This repository contains the source code to reproduce the experimental results as described in the paper ["Factorization Meets the Item Embedding: Regularizing Matrix Factorization with Item Co-occurrence"](http://dawenl.github.io/publications/LiangACB16-cofactor.pdf) (RecSys'16).
 
 ## Dependencies
 The python module dependencies are:
