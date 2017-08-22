@@ -153,7 +153,7 @@ def precision_at_k_batch(train_data, heldout_data, Et, Eb, user_idx,
 
     X_pred = _make_prediction(train_data, Et, Eb, user_idx,
                               batch_users, mu=mu, vad_data=vad_data)
-    idx = bn.argpartsort(-X_pred, k, axis=1)
+    idx = bn.argpartition(-X_pred, k, axis=1)
     X_pred_binary = np.zeros_like(X_pred, dtype=bool)
     X_pred_binary[np.arange(batch_users)[:, np.newaxis], idx[:, :k]] = True
 
@@ -174,7 +174,7 @@ def recall_at_k_batch(train_data, heldout_data, Et, Eb, user_idx,
 
     X_pred = _make_prediction(train_data, Et, Eb, user_idx,
                               batch_users, mu=mu, vad_data=vad_data)
-    idx = bn.argpartsort(-X_pred, k, axis=1)
+    idx = bn.argpartition(-X_pred, k, axis=1)
     X_pred_binary = np.zeros_like(X_pred, dtype=bool)
     X_pred_binary[np.arange(batch_users)[:, np.newaxis], idx[:, :k]] = True
 
@@ -239,7 +239,7 @@ def NDCG_binary_at_k_batch(train_data, heldout_data, Et, Eb, user_idx,
 
     X_pred = _make_prediction(train_data, Et, Eb, user_idx,
                               batch_users, mu=mu, vad_data=vad_data)
-    idx_topk_part = bn.argpartsort(-X_pred, k, axis=1)
+    idx_topk_part = bn.argpartition(-X_pred, k, axis=1)
     topk_part = X_pred[np.arange(batch_users)[:, np.newaxis],
                        idx_topk_part[:, :k]]
     idx_part = np.argsort(-topk_part, axis=1)
@@ -266,7 +266,7 @@ def MAP_at_k_batch(train_data, heldout_data, Et, Eb, user_idx, mu=None, k=100,
 
     X_pred = _make_prediction(train_data, Et, Eb, user_idx, batch_users, mu=mu,
                               vad_data=vad_data)
-    idx_topk_part = bn.argpartsort(-X_pred, k, axis=1)
+    idx_topk_part = bn.argpartition(-X_pred, k, axis=1)
     topk_part = X_pred[np.arange(batch_users)[:, np.newaxis],
                        idx_topk_part[:, :k]]
     idx_part = np.argsort(-topk_part, axis=1)
